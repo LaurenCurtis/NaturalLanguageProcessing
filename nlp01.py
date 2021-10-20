@@ -26,7 +26,7 @@ text = "you are the best"
 blob = TextBlob(text)
 print(blob)
 print(round(blob.sentiment.polarity,3))
-"""
+
 
 from textblob.sentiments import NaiveBayesAnalyzer
 blob = TextBlob(text, analyzer=NaiveBayesAnalyzer())
@@ -39,3 +39,39 @@ print(spanish)
 chineese = blob.translate(to = 'zh')
 print(chineese)
 print(chineese.translate())
+"""
+
+from textblob import Word
+index = Word('index')
+print(index.pluralize())
+cacti = Word('cacti')
+print(cacti.singularize())
+
+#wordlist
+animals = TextBlob('dog cat fish bird').words
+print(animals.pluralize())
+
+word = Word('theyr')
+print(word.spellcheck())
+print(word.correct())
+
+word1 = Word('studies')
+word2 = Word('varieties')
+
+print(word1.stem())
+print(word2.stem())
+print(word1.lemmatize())
+print(word2.lemmatize())
+
+happy = Word('happy')
+print(happy.definitions)
+print(happy.synsets)
+
+for s in happy.synsets:
+    for l in s.lemmas():
+        print(l.name)
+
+synonym = happy.synsets[1].lemmas()[0].name()
+
+antonym = happy.synsets[0].lemmas()[0].antonyms()[0].name
+print(antonym)
